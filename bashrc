@@ -22,3 +22,4 @@ alias msfpsexec='echo "use exploit/windows/smb/psexec" > /tmp/handler.rc && echo
 
 # Cain
 cainpass () { cut -d$'\t' -f4 $1 | grep -v '^$' | grep -v '* empty *'; }
+cainlogins () { cut -d$'\t' -f1,4 $1 | awk '$2 != "" { print $1,$2 }' | awk '$2 != "*" { print $1,$2 }'; }
